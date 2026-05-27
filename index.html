@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+  <script src="security.js"></script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
   <title>Para ti · Coleccion Privada</title>
@@ -449,6 +450,305 @@
     .progress-bar::after{content:'';position:absolute;right:-4px;top:50%;transform:translateY(-50%);width:11px;height:11px;border-radius:50%;background:var(--rose);box-shadow:0 0 11px var(--pink),0 0 5px var(--pink);}
 
     /* ══════════════════════════════
+       NERO — MEMORIAL CINEMATIC
+    ══════════════════════════════ */
+    .nero-wrap{
+      width:100%;max-width:460px;
+      margin-top:26px;
+    }
+    /* Film-strip top bar */
+    .nero-film-bar{
+      display:flex;align-items:center;justify-content:space-between;
+      padding:0 4px;margin-bottom:12px;
+    }
+    .nero-film-left{
+      display:flex;align-items:center;gap:9px;
+    }
+    .nero-paw-icon{
+      width:30px;height:30px;
+      border-radius:50%;
+      background:rgba(212,150,80,0.1);border:1px solid rgba(212,150,80,0.22);
+      display:flex;align-items:center;justify-content:center;
+      flex-shrink:0;
+      box-shadow:0 0 16px rgba(212,150,80,0.12);
+    }
+    .nero-paw-icon svg{width:14px;height:14px;}
+    .nero-film-meta{display:flex;flex-direction:column;gap:2px;}
+    .nero-film-eyebrow{
+      font-size:8px;letter-spacing:4px;text-transform:uppercase;
+      color:rgba(212,150,80,0.5);font-weight:700;
+    }
+    .nero-film-name{
+      font-size:15px;font-weight:800;color:#fff;line-height:1;
+      letter-spacing:-.3px;
+    }
+    .nero-film-name em{
+      font-family:'Playfair Display',serif;font-style:italic;
+      color:rgba(230,175,110,0.92);
+      text-shadow:0 0 18px rgba(212,150,80,0.5);
+      -webkit-text-stroke:0;
+    }
+    .nero-film-right{
+      display:flex;align-items:center;gap:7px;
+    }
+    .nero-forever-badge{
+      font-size:8px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;
+      color:rgba(212,150,80,0.65);
+      background:rgba(212,150,80,0.08);border:1px solid rgba(212,150,80,0.18);
+      border-radius:999px;padding:5px 13px;
+    }
+    /* Video container */
+    .nero-cinema{
+      width:100%;border-radius:22px;overflow:hidden;
+      position:relative;
+      background:#06000a;
+      border:1px solid rgba(212,150,80,0.2);
+      box-shadow:
+        0 0 0 1px rgba(0,0,0,0.6),
+        0 12px 50px rgba(0,0,0,0.7),
+        0 0 60px rgba(212,150,80,0.07);
+    }
+    /* Golden corner accents */
+    .nero-corner{
+      position:absolute;width:18px;height:18px;
+      z-index:4;pointer-events:none;
+    }
+    .nero-corner svg{width:18px;height:18px;}
+    .nero-corner.tl{top:10px;left:10px;}
+    .nero-corner.tr{top:10px;right:10px;transform:scaleX(-1);}
+    .nero-corner.bl{bottom:10px;left:10px;transform:scaleY(-1);}
+    .nero-corner.br{bottom:10px;right:10px;transform:scale(-1);}
+    /* Film holes decoration */
+    .nero-filmstrip{
+      position:absolute;top:0;left:0;right:0;
+      height:28px;z-index:3;pointer-events:none;
+      display:flex;align-items:center;gap:6px;
+      padding:0 10px;
+      background:linear-gradient(180deg,rgba(6,0,10,0.85) 0%,transparent 100%);
+    }
+    .nero-filmhole{
+      width:10px;height:7px;border-radius:2px;
+      background:rgba(212,150,80,0.1);border:1px solid rgba(212,150,80,0.15);
+      flex-shrink:0;
+    }
+    /* SVG paw watermark on video */
+    .nero-paw-watermark{
+      position:absolute;bottom:14px;right:14px;
+      z-index:3;pointer-events:none;opacity:0.13;
+    }
+    .nero-paw-watermark svg{width:38px;height:38px;fill:rgba(230,175,110,1);}
+    /* The video itself */
+    .nero-cinema video{
+      width:100%;display:block;
+      max-height:380px;
+      object-fit:cover;
+    }
+    /* Bottom gradient overlay on video */
+    .nero-vgrad{
+      position:absolute;inset:0;pointer-events:none;z-index:2;
+      background:linear-gradient(
+        180deg,
+        rgba(6,0,10,0) 50%,
+        rgba(6,0,10,0.22) 80%,
+        rgba(6,0,10,0.55) 100%
+      );
+    }
+    /* Message card */
+    .nero-msg-card{
+      margin-top:12px;
+      padding:24px 22px 20px;
+      border-radius:20px;
+      border:1px solid rgba(255,255,255,0.055);
+      background:rgba(255,255,255,0.016);
+      backdrop-filter:blur(16px);
+      -webkit-backdrop-filter:blur(16px);
+      position:relative;overflow:hidden;
+    }
+    .nero-msg-card::before{
+      content:'';position:absolute;
+      top:0;left:12%;right:12%;height:1px;
+      background:linear-gradient(to right,transparent,rgba(212,150,80,0.32),transparent);
+    }
+    .nero-msg-card::after{
+      content:'';position:absolute;inset:0;border-radius:20px;
+      background:radial-gradient(ellipse 90% 50% at 50% -10%,rgba(212,150,80,0.06) 0%,transparent 60%);
+      pointer-events:none;
+    }
+    /* big decorative quote */
+    .nero-bigq{
+      font-size:72px;line-height:.4;
+      font-family:'Playfair Display',serif;font-style:italic;
+      color:rgba(212,150,80,0.1);
+      position:absolute;top:14px;left:14px;
+      user-select:none;pointer-events:none;
+    }
+    .nero-msg-text{
+      font-size:13px;line-height:1.9;
+      color:rgba(255,255,255,0.42);
+      font-weight:300;font-style:italic;
+      text-align:center;
+      position:relative;z-index:1;
+      padding:0 6px;
+    }
+    .nero-msg-text strong{
+      color:rgba(230,175,110,0.88);
+      font-style:normal;font-weight:600;
+    }
+    .nero-msg-text em{
+      color:rgba(255,255,255,0.65);
+      font-style:normal;
+    }
+    /* paw divider row */
+    .nero-paw-row{
+      display:flex;align-items:center;justify-content:center;
+      gap:10px;margin:14px 0 12px;
+      position:relative;z-index:1;
+    }
+    .nero-paw-row svg{
+      width:14px;height:14px;
+      fill:rgba(212,150,80,0.22);
+      flex-shrink:0;
+    }
+    .nero-paw-row-line{
+      flex:1;height:1px;
+      background:linear-gradient(to right,transparent,rgba(212,150,80,0.12),transparent);
+    }
+    .nero-sign{
+      text-align:right;
+      font-family:'Playfair Display',serif;font-style:italic;
+      font-size:17px;color:rgba(212,150,80,0.42);
+      letter-spacing:-.4px;
+      position:relative;z-index:1;
+    }
+
+    /* ══════════════════════════════
+       POPUP — DESBLOQUEAR RECUERDO
+    ══════════════════════════════ */
+    .popup-overlay{
+      position:fixed;inset:0;z-index:9000;
+      background:rgba(6,0,10,0.82);
+      backdrop-filter:blur(12px);
+      -webkit-backdrop-filter:blur(12px);
+      display:flex;align-items:flex-end;justify-content:center;
+      padding:0 20px 0;
+      opacity:0;pointer-events:none;
+      transition:opacity .5s cubic-bezier(.4,0,.2,1);
+    }
+    .popup-overlay.open{
+      opacity:1;pointer-events:all;
+    }
+    .popup-card{
+      width:100%;max-width:440px;
+      border-radius:28px 28px 0 0;
+      background:rgba(10,3,16,0.96);
+      border:1px solid rgba(212,150,80,0.18);
+      border-bottom:none;
+      padding:32px 28px 44px;
+      position:relative;overflow:hidden;
+      transform:translateY(100%);
+      transition:transform .65s cubic-bezier(.22,.68,0,1.15);
+    }
+    .popup-overlay.open .popup-card{
+      transform:translateY(0);
+    }
+    /* Top golden line */
+    .popup-card::before{
+      content:'';position:absolute;
+      top:0;left:15%;right:15%;height:1px;
+      background:linear-gradient(to right,transparent,rgba(212,150,80,0.55),transparent);
+    }
+    /* Ambient glow inside card */
+    .popup-card::after{
+      content:'';position:absolute;inset:0;
+      background:radial-gradient(ellipse 80% 55% at 50% -5%,rgba(212,150,80,0.08) 0%,transparent 65%);
+      pointer-events:none;
+    }
+    /* Handle bar */
+    .popup-handle{
+      width:40px;height:4px;border-radius:999px;
+      background:rgba(255,255,255,0.1);
+      margin:0 auto 28px;
+    }
+    /* Spinning ring around icon */
+    .popup-ring-wrap{
+      display:flex;justify-content:center;margin-bottom:22px;
+      position:relative;z-index:1;
+    }
+    .popup-ring{
+      position:relative;width:72px;height:72px;
+    }
+    .popup-ring-svg{
+      position:absolute;inset:0;
+      animation:popRingSpin 10s linear infinite;
+    }
+    @keyframes popRingSpin{from{transform:rotate(0);}to{transform:rotate(360deg);}}
+    .popup-ring-inner{
+      position:absolute;inset:10px;
+      border-radius:50%;
+      background:rgba(212,150,80,0.08);
+      border:1px solid rgba(212,150,80,0.2);
+      display:flex;align-items:center;justify-content:center;
+    }
+    .popup-ring-inner svg{width:24px;height:24px;fill:rgba(230,175,110,0.85);}
+    /* Texts */
+    .popup-eyebrow{
+      text-align:center;
+      font-size:8px;letter-spacing:4.5px;text-transform:uppercase;
+      color:rgba(212,150,80,0.55);font-weight:700;
+      margin-bottom:10px;
+      position:relative;z-index:1;
+    }
+    .popup-title{
+      text-align:center;
+      font-size:clamp(22px,6vw,30px);font-weight:900;
+      color:#fff;line-height:1.1;letter-spacing:-.5px;
+      margin-bottom:6px;
+      position:relative;z-index:1;
+    }
+    .popup-title em{
+      font-family:'Playfair Display',serif;font-style:italic;
+      color:rgba(230,175,110,0.92);
+      text-shadow:0 0 24px rgba(212,150,80,0.45);
+      -webkit-text-stroke:0;
+    }
+    .popup-sub{
+      text-align:center;
+      font-size:13px;line-height:1.75;
+      color:rgba(255,255,255,0.32);
+      font-weight:300;font-style:italic;
+      margin-bottom:28px;
+      position:relative;z-index:1;
+      max-width:300px;margin-left:auto;margin-right:auto;
+    }
+    /* CTA button */
+    .popup-cta{
+      display:flex;align-items:center;justify-content:center;gap:10px;
+      width:100%;height:52px;border-radius:999px;
+      background:linear-gradient(120deg,rgba(212,150,80,0.9),rgba(180,110,40,0.95));
+      border:none;cursor:pointer;
+      font-family:'Sora',sans-serif;
+      font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;
+      color:#06000a;
+      box-shadow:0 6px 30px rgba(212,150,80,0.3),inset 0 1px 0 rgba(255,255,255,0.2);
+      transition:transform .25s cubic-bezier(.22,.68,0,1.2),box-shadow .25s ease;
+      position:relative;z-index:1;
+      margin-bottom:14px;
+    }
+    .popup-cta:hover{transform:scale(1.04);box-shadow:0 8px 40px rgba(212,150,80,0.45),inset 0 1px 0 rgba(255,255,255,0.2);}
+    .popup-cta:active{transform:scale(.97);transition-duration:.1s;}
+    .popup-cta svg{width:16px;height:16px;stroke:#06000a;stroke-width:2.5;fill:none;}
+    /* Skip link */
+    .popup-skip{
+      display:block;text-align:center;
+      font-size:10px;letter-spacing:2px;text-transform:uppercase;
+      color:rgba(255,255,255,0.18);cursor:pointer;
+      background:none;border:none;font-family:'Sora',sans-serif;
+      position:relative;z-index:1;width:100%;
+      transition:color .2s ease;
+    }
+    .popup-skip:hover{color:rgba(255,255,255,0.35);}
+
+    /* ══════════════════════════════
        PAGE FOOTER
     ══════════════════════════════ */
     .page-foot{
@@ -490,6 +790,7 @@
 <canvas id="canvas-bg"></canvas>
 
 <div class="page">
+
 
   <!-- TOP BAR -->
   <div class="topbar">
@@ -682,6 +983,73 @@
     <div class="div-line"></div>
   </div>
 
+  <!-- NERO — MEMORIAL CINEMATIC -->
+  <div class="nero-wrap fade-in" id="nero-section">
+    <!-- Film bar header -->
+    <div class="nero-film-bar">
+      <div class="nero-film-left">
+        <div class="nero-paw-icon">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <ellipse cx="8.5" cy="7" rx="2.2" ry="3" fill="rgba(230,175,110,0.8)"/>
+            <ellipse cx="15.5" cy="7" rx="2.2" ry="3" fill="rgba(230,175,110,0.8)"/>
+            <ellipse cx="5" cy="12.5" rx="1.8" ry="2.5" fill="rgba(230,175,110,0.8)"/>
+            <ellipse cx="19" cy="12.5" rx="1.8" ry="2.5" fill="rgba(230,175,110,0.8)"/>
+            <path d="M12 10.5c-3.5 0-6 2.2-5.5 5 .4 2.2 2.5 3.5 5.5 3.5s5.1-1.3 5.5-3.5c.5-2.8-2-5-5.5-5z" fill="rgba(230,175,110,0.8)"/>
+          </svg>
+        </div>
+        <div class="nero-film-meta">
+          <div class="nero-film-eyebrow">Un momento para recordar</div>
+          <div class="nero-film-name">Para <em>Nero</em></div>
+        </div>
+      </div>
+      <div class="nero-film-right">
+        <div class="nero-forever-badge">Siempre</div>
+      </div>
+    </div>
+    <!-- Cinematic video -->
+    <div class="nero-cinema">
+      <div class="nero-corner tl"><svg viewBox="0 0 18 18" fill="none"><path d="M1 9V2a1 1 0 0 1 1-1h6" stroke="rgba(212,150,80,0.55)" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+      <div class="nero-corner tr"><svg viewBox="0 0 18 18" fill="none"><path d="M1 9V2a1 1 0 0 1 1-1h6" stroke="rgba(212,150,80,0.55)" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+      <div class="nero-corner bl"><svg viewBox="0 0 18 18" fill="none"><path d="M1 9V2a1 1 0 0 1 1-1h6" stroke="rgba(212,150,80,0.55)" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+      <div class="nero-corner br"><svg viewBox="0 0 18 18" fill="none"><path d="M1 9V2a1 1 0 0 1 1-1h6" stroke="rgba(212,150,80,0.55)" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+      <div class="nero-filmstrip">
+        <div class="nero-filmhole"></div><div class="nero-filmhole"></div>
+        <div class="nero-filmhole"></div><div class="nero-filmhole"></div>
+        <div class="nero-filmhole"></div><div class="nero-filmhole"></div>
+        <div class="nero-filmhole"></div><div class="nero-filmhole"></div>
+        <div class="nero-filmhole"></div><div class="nero-filmhole"></div>
+        <div class="nero-filmhole"></div><div class="nero-filmhole"></div>
+      </div>
+      <div class="nero-paw-watermark">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="8.5" cy="7" rx="2.2" ry="3"/><ellipse cx="15.5" cy="7" rx="2.2" ry="3"/>
+          <ellipse cx="5" cy="12.5" rx="1.8" ry="2.5"/><ellipse cx="19" cy="12.5" rx="1.8" ry="2.5"/>
+          <path d="M12 10.5c-3.5 0-6 2.2-5.5 5 .4 2.2 2.5 3.5 5.5 3.5s5.1-1.3 5.5-3.5c.5-2.8-2-5-5.5-5z"/>
+        </svg>
+      </div>
+      <div class="nero-vgrad"></div>
+      <video id="nero-video" src="nero.mp4" controls playsinline preload="metadata"></video>
+    </div>
+    <!-- Message -->
+    <div class="nero-msg-card">
+      <div class="nero-bigq">&ldquo;</div>
+      <p class="nero-msg-text">
+        Cada vez que te veo jugar con él en este video me da un ataque enserio. <strong>Nero</strong> tuvo la suerte
+        de tenerte a ti — y tú la suerte de haberle querido tanto y haberle tenido.<br/><br/>
+       Queria que lo tuvieses aqui porque aunque el ya no este quiero que sepas que te ama muchisimo y fuiste <em>la mejor madre</em>.
+        Que no se olvide nunca lo feliz que os hicisteis el uno al otro.
+      </p>
+      <div class="nero-paw-row">
+        <div class="nero-paw-row-line"></div>
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><ellipse cx="8.5" cy="7" rx="2.2" ry="3"/><ellipse cx="15.5" cy="7" rx="2.2" ry="3"/><ellipse cx="5" cy="12.5" rx="1.8" ry="2.5"/><ellipse cx="19" cy="12.5" rx="1.8" ry="2.5"/><path d="M12 10.5c-3.5 0-6 2.2-5.5 5 .4 2.2 2.5 3.5 5.5 3.5s5.1-1.3 5.5-3.5c.5-2.8-2-5-5.5-5z"/></svg>
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><ellipse cx="8.5" cy="7" rx="2.2" ry="3"/><ellipse cx="15.5" cy="7" rx="2.2" ry="3"/><ellipse cx="5" cy="12.5" rx="1.8" ry="2.5"/><ellipse cx="19" cy="12.5" rx="1.8" ry="2.5"/><path d="M12 10.5c-3.5 0-6 2.2-5.5 5 .4 2.2 2.5 3.5 5.5 3.5s5.1-1.3 5.5-3.5c.5-2.8-2-5-5.5-5z"/></svg>
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><ellipse cx="8.5" cy="7" rx="2.2" ry="3"/><ellipse cx="15.5" cy="7" rx="2.2" ry="3"/><ellipse cx="5" cy="12.5" rx="1.8" ry="2.5"/><ellipse cx="19" cy="12.5" rx="1.8" ry="2.5"/><path d="M12 10.5c-3.5 0-6 2.2-5.5 5 .4 2.2 2.5 3.5 5.5 3.5s5.1-1.3 5.5-3.5c.5-2.8-2-5-5.5-5z"/></svg>
+        <div class="nero-paw-row-line"></div>
+      </div>
+      <div class="nero-sign">Bechito</div>
+    </div>
+  </div>
+
   <!-- CARTA -->
   <div class="letter-card fade-in">
     <div class="letter-label"><span></span>Para ti<span></span></div>
@@ -710,6 +1078,44 @@
     <span>Solo para ti</span>
   </div>
 
+</div>
+
+<!-- POPUP — DESBLOQUEAR RECUERDO -->
+<div class="popup-overlay" id="nero-popup" role="dialog" aria-modal="true">
+  <div class="popup-card" id="nero-popup-card">
+    <div class="popup-handle"></div>
+    <!-- Spinning paw ring -->
+    <div class="popup-ring-wrap">
+      <div class="popup-ring">
+        <svg class="popup-ring-svg" viewBox="0 0 72 72" fill="none">
+          <circle cx="36" cy="36" r="34" stroke="rgba(212,150,80,0.12)" stroke-width="1"/>
+          <circle cx="36" cy="2" r="3" fill="rgba(212,150,80,0.6)"/>
+          <circle cx="70" cy="36" r="2" fill="rgba(255,255,255,0.18)"/>
+          <circle cx="36" cy="70" r="2" fill="rgba(255,255,255,0.18)"/>
+          <circle cx="2"  cy="36" r="2" fill="rgba(255,255,255,0.18)"/>
+          <circle cx="63" cy="11" r="1.2" fill="rgba(212,150,80,0.35)"/>
+          <circle cx="11" cy="63" r="1.2" fill="rgba(212,150,80,0.35)"/>
+        </svg>
+        <div class="popup-ring-inner">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <ellipse cx="8.5" cy="7" rx="2.2" ry="3"/>
+            <ellipse cx="15.5" cy="7" rx="2.2" ry="3"/>
+            <ellipse cx="5" cy="12.5" rx="1.8" ry="2.5"/>
+            <ellipse cx="19" cy="12.5" rx="1.8" ry="2.5"/>
+            <path d="M12 10.5c-3.5 0-6 2.2-5.5 5 .4 2.2 2.5 3.5 5.5 3.5s5.1-1.3 5.5-3.5c.5-2.8-2-5-5.5-5z"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+    <div class="popup-eyebrow">Un recuerdo especial</div>
+    <div class="popup-title">Desbloquear<br/><em>un recuerdo</em></div>
+    <p class="popup-sub">Hay algo guardado para ti aquí dentro. Un momento que merece ser visto.</p>
+    <button class="popup-cta" id="nero-popup-btn">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polygon points="10,8 16,12 10,16" fill="#06000a" stroke="none"/></svg>
+      Ver el recuerdo
+    </button>
+    <button class="popup-skip" id="nero-popup-skip">Ahora no</button>
+  </div>
 </div>
 
 <script>
@@ -801,6 +1207,41 @@ document.querySelectorAll('.card.active').forEach(card=>{
   });
   card.addEventListener('mouseleave',function(){this.style.transform='';});
 });
+
+/* —— POPUP NERO —— */
+(function(){
+  const overlay=document.getElementById('nero-popup');
+  const btnVer=document.getElementById('nero-popup-btn');
+  const btnSkip=document.getElementById('nero-popup-skip');
+  const neroSection=document.getElementById('nero-section');
+
+  function closePopup(){
+    overlay.classList.remove('open');
+    setTimeout(()=>{overlay.style.display='none';},550);
+  }
+
+  // Show popup after 1s
+  setTimeout(()=>{
+    overlay.style.display='flex';
+    requestAnimationFrame(()=>requestAnimationFrame(()=>overlay.classList.add('open')));
+  },1000);
+
+  btnVer.addEventListener('click',()=>{
+    closePopup();
+    setTimeout(()=>{
+      if(neroSection){
+        neroSection.scrollIntoView({behavior:'smooth',block:'start'});
+      }
+    },400);
+  });
+
+  btnSkip.addEventListener('click',closePopup);
+
+  // Close if clicking the dark overlay backdrop
+  overlay.addEventListener('click',function(e){
+    if(e.target===overlay) closePopup();
+  });
+})();
 
 /* ── FADE IN SCROLL ── */
 const obs=new IntersectionObserver(entries=>{
